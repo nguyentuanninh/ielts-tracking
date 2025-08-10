@@ -92,6 +92,39 @@ python3 scripts/export_quizlet.py --input vocab --output quizlet_export.tsv
 
 Truy cập Quizlet -> Create -> Import -> dán nội dung TSV.
 
+### Tự Động Tạo Set Quizlet (Playwright)
+
+(Beta – có thể hỏng khi Quizlet đổi giao diện; dùng cá nhân.)
+
+1. Cài phụ thuộc:
+   ```
+   pip install -r scripts/requirements.txt
+   playwright install
+   ```
+2. Xuất 2 file TSV (vocab & collocations) như bình thường.
+3. Đặt biến môi trường đăng nhập (không commit):
+   ```
+   export QUIZLET_USER="email_or_username"
+   export QUIZLET_PASS="your_password"
+   # Hoặc dùng file .env (không commit) + direnv
+   ```
+4. Chạy script (ví dụ headful + chọn folder có sẵn "IELTS Daily"):
+   ```
+   python3 scripts/quizlet_playwright.py \
+     --vocab-file vocab/chronicle-of-timekeeping-vocab.tsv \
+     --collocation-file vocab/chronicle-of-timekeeping-collocations.tsv \
+     --folder "IELTS with Ms.Tam" --headful
+   ```
+5. Script tạo 2 set với tiêu đề dạng `DD/MM vocab` và `DD/MM collocation` (vd 11/08 vocab). Dùng `--date 10/08` để override.
+
+Flags hữu ích:
+
+- `--slowmo 150` nhìn thao tác rõ.
+- `--debug` in console.
+- `--auto-close` đóng browser sau khi tạo (mặc định giữ mở khi headful).
+
+Lưu ý bảo mật: không hardcode password; nếu đã lộ đổi mật khẩu ngay.
+
 ## Quy Ước Từ Vựng (JSON)
 
 ```
