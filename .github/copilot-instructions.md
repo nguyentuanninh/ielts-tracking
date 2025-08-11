@@ -36,7 +36,7 @@ When given a passage (any length, including screenshot OCR if needed):
 6. Practice on explicit request only ("Practice"): create Vocabulary (gap-fill/matching; if >60 sampled 25 note sampling) + Grammar (identify/transform) + Collocations (completion). Provide answer key.
 7. File generation (auto on each new passage screenshot/text unless user opts out):
    - Generate slug from title or first 4–5 keywords lowercase hyphen (e.g. `chronicle-of-timekeeping`).
-   - Create `vocab/<slug>-vocab.tsv`: tab-separated for Quizlet (Term<TAB>Definition). Term = word or expression; Definition = VN gloss + short EN usage + (CEFR). One line per unique item (B1/B2/C1 + A2\* included). Avoid tabs inside fields; semicolons for multiple senses.
+   - Create `vocab/<slug>-vocab.tsv`: tab-separated for Quizlet (Term<TAB>Definition). Term = word or expression; Definition = VN gloss + short EN usage + (CEFR). One line per unique item (B1/B2/C1 + A2\* NOT included). Avoid tabs inside fields; semicolons for multiple senses.
    - Create `vocab/<slug>-collocations.tsv`: collocation/expression<TAB>VN meaning / function + EN pattern note.
    - Create `grammar/<slug>-grammar.md`: detailed grammar/structure list (expanded explanations, numbered, can reuse extraction but elaborated examples + mini practice placeholders). Heading: `# Grammar – <Slug>` then (Structures, Explanations, Common Pitfalls, Upgrade Tips, Mini Practice).
 8. Ensure idempotent update: if files exist, append only NEW items (avoid duplicates) and note "(updated)" in commit message.
